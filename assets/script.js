@@ -1,33 +1,65 @@
 var button = document.querySelector(".button-element")
-var questions = document.querySelector(".questions-container")
-var container = document.getElementById("container")
-var questionOne = document.getElementById("question1")
-var questionTwo = document.getElementById("question2")
-var questionThree = document.getElementById("question3")
-var questionFour = document.getElementById("question4")
-var questionFive = document.getElementById("question5")
-
-
-var questionInput = document.querySelector(".newQuestion")
-var answerInput1 =  document.querySelector(".answer1")
-var answerInput2 =  document.querySelector(".answer2")
-var answerInput3 =  document.querySelector(".answer3")
-var answerInput4 =  document.querySelector(".answer4")
+var mainContainer = document.getElementById("container")
+var questionsContainer = document.querySelector(".questions-container")
 var timerEl = document.querySelector(".timer")
 var timer;
-var sec = 60;
+var sec = 59;
+var isCorrect = true
 
-button.addEventListener("click", function startButton () {
-   container.setAttribute("style", "display: none");
-//    questions.setAttribute("style", "display: none");
-   questionOne.setAttribute("style", "display: flex");
-   questionTwo.setAttribute("style", "display: none");
-   questionThree.setAttribute("style", "display: none");
-   questionFour.setAttribute("style", "display: none");
-   questionFive.setAttribute("style", "display: none");
-    timerStart();
-    return question1();
-})
+var question1 = document.querySelector(".question");
+var option1 = document.querySelector(".option1");
+var option2 = document.querySelector(".option2");
+var option3 = document.querySelector(".option3");
+var option4 = document.querySelector(".option4");
+
+
+var myQuiz = [
+    {
+        question: "Inside which element do we put Javascript?",
+        answers: [
+            {a: "<js>", isCorrect: false}, 
+            {b: "<scripting>", isCorrect: false}, 
+            {c: "<script>", isCorrect: true}, 
+            {d: "<javascript>", isCorrect: false}
+        ]
+    },
+    {
+        question: "What is the correct syntax for referring to an external script called 'abc.js'?",
+        answers: [
+            {a: "<script href='abc.js>", isCorrect: false}, 
+            {b: "<script name='abc.js'>", isCorrect: false}, 
+            {c: "<script src='abc.js'>", isCorrect: true}, 
+            {d: "None of the above", isCorrect: false}
+        ]
+    },
+    {
+        question: "What is mean by 'this' keyword in javascript?",
+        answers: [
+            {a: "It refers to the current object", isCorrect: true}, 
+            {b: "It refers to the previous object", isCorrect: false}, 
+            {c: "It is variable which contains value", isCorrect: false}, 
+            {d: "None of the above", isCorrect: false}
+        ]
+    },
+    {
+        question: "What are variables used for in JavaScript Programs?",
+        answers: [
+            {a: "Storing numbers, dates, or other values", isCorrect: true}, 
+            {b: "Varying randomly", isCorrect: false}, 
+            {c: "Causing high-school algebra flashbacks", isCorrect: false}, 
+            {d: "None of the above", isCorrect: false}
+        ]
+    },
+    {
+        question: "Which is not an example of a datatype?",
+        answers: [
+            {a: "boolean", isCorrect: false}, 
+            {b: "variable", isCorrect: true}, 
+            {c: "string", isCorrect: false}, 
+            {d: "number", isCorrect: false}
+        ]
+    }
+]
 
 function timerStart () {
     timer = setInterval(()=>{
@@ -41,55 +73,25 @@ function timerStart () {
 }
 
 
+button.addEventListener("click", function startButton() {
+   mainContainer.setAttribute("style", "display: none");
+   questionsContainer.setAttribute("style", "display: flex");
+    timerStart();
+    question1.textContent = myQuiz[0].question;
+    option1.textContent = myQuiz[0].answers[0].a;
+    option2.textContent = myQuiz[0].answers[1].b;
+    option3.textContent = myQuiz[0].answers[2].c;
+    option4.textContent = myQuiz[0].answers[3].d;
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-function question1() {
-    questionInput.textContent = "Inside which element do we put Javascript?";
-    answerInput1.textContent = "<js>";
-    answerInput2.textContent = "<scripting>";
-    answerInput3.textContent = "<script>";
-    answerInput4.textContent = "<javascript>";
-}
-
-function question2() {
-    questionInput.textContent = "What is the correct syntax for referring to an external script called 'abc.js'?";
-    answerInput1.textContent = "<script href='abc.js>'";
-    answerInput2.textContent = "<script name='abc.js'>";
-    answerInput3.textContent = "<script src='abc.js'>";
-    answerInput4.textContent = "None of the above";
-}
-
-function question2() {
-    questionInput.textContent = "What is mean by 'this' keyword in javascript?";
-    answerInput1.textContent = "It refers current object";
-    answerInput2.textContent = "It referes previous object";
-    answerInput3.textContent = "It is variable which contains value";
-    answerInput4.textContent = "None of the above";
-}
-
-function question2() {
-    questionInput.textContent = "What are variables used for in JavaScript Programs?";
-    answerInput1.textContent = "Storing numbers, dates, or other values";
-    answerInput2.textContent = "Varying randomly";
-    answerInput3.textContent = "Causing high-school algebra flashbacks";
-    answerInput4.textContent = "None of the above";
-}
-
-function question2() {
-    questionInput.textContent = "Which is not an example of a datatype?";
-    answerInput1.textContent = "boolean";
-    answerInput2.textContent = "number";
-    answerInput3.textContent = "variable";
-    answerInput4.textContent = "string";
-}
+option3.addEventListener("click", function next() {
+    if (isCorrect === true) {
+        question1.textContent = myQuiz[1].question;
+        option1.textContent = myQuiz[1].answers[0].a;
+        option2.textContent = myQuiz[1].answers[1].b;
+        option3.textContent = myQuiz[1].answers[2].c;
+        option4.textContent = myQuiz[1].answers[3].d;
+    } else if(isCorrect === false) {
+        console.log("false")
+    }
+})

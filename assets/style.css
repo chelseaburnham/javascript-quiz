@@ -18,9 +18,8 @@
     border-width: 2px;
  }
 
- #question1, #question2, #question3, #question4, #question5 {
+.questions-container {
    display: none;
-   /* display: flex; */
    flex-direction: column;
    justify-content: center;
    align-items: center;
