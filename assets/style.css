@@ -25,6 +25,10 @@
    align-items: center;
    gap: 20px;
  }
+
+ #score-container {
+   display: none;
+ }
   
  footer {
     display: flex;

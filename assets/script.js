@@ -12,8 +12,10 @@ var option2 = document.querySelector("#option2");
 var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 var userAnswer = document.getElementById("user-answer")
+var scoreContainer = document.getElementById("score-container")
 
 var currentQuestion = 0
+var numberCorrectQuestions = 0 
 
 var myQuiz = [
     {
@@ -65,10 +67,10 @@ var myQuiz = [
 
 function timerStart () {
     timer = setInterval(()=>{
-        timerEl.innerHTML = +sec;
+        timerEl.innerText = sec;
         sec --;
     if (sec < 0) {
-        clearInterval(timer);
+        score()
         }
     }, 1000);
     
@@ -111,13 +113,15 @@ function next() {
         userAnswer.textContent = "That answer is incorrect.";
         sec-=5
     } else {
+        numberCorrectQuestions++;
         userAnswer.textContent = "That answer is correct.";
     }
     if(currentQuestion < myQuiz.length-1) {
         currentQuestion++;
         questionInput();
     } else {
-        console.log("test")
+        console.log("test");
+        score()
     }
 }
 
@@ -127,4 +131,12 @@ function questionInput() {
     option2.textContent = myQuiz[currentQuestion].answers[1].b;
     option3.textContent = myQuiz[currentQuestion].answers[2].c;
     option4.textContent = myQuiz[currentQuestion].answers[3].d;
+}
+
+function score() {
+    clearInterval(timer);
+    timerEl.innerText = sec;
+    questionsContainer.setAttribute("style", "display: none");
+    scoreContainer.setAttribute("style", "display: flex");
+    document.getElementById("score-table").textContent = "Score: " + (numberCorrectQuestions + sec)
 }
