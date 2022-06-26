@@ -140,3 +140,12 @@ function score() {
     scoreContainer.setAttribute("style", "display: flex");
     document.getElementById("score-table").textContent = "Score: " + (numberCorrectQuestions + sec)
 }
+
+document.getElementById("submit-button").addEventListener("click", function() {
+    var userName = document.getElementById("user-name").value;
+    console.log(userName)
+    var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
+    previousScore.push({user: userName, score: (numberCorrectQuestions + sec)}) 
+    localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
+    
+})
