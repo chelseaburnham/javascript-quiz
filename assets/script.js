@@ -90,15 +90,6 @@ option3.addEventListener("click", next)
 option4.addEventListener("click", next)
 
 function next() {
-    // if (isCorrect === true) {
-    //     question1.textContent = myQuiz[1].question;
-    //     option1.textContent = myQuiz[1].answers[0].a;
-    //     option2.textContent = myQuiz[1].answers[1].b;
-    //     option3.textContent = myQuiz[1].answers[2].c;
-    //     option4.textContent = myQuiz[1].answers[3].d;
-    // } else if(isCorrect === false) {
-    //     console.log("false")
-    // }
     var answer = this.getAttribute("id") 
     if (answer === "option1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
         userAnswer.textContent = "That answer is incorrect.";
@@ -120,7 +111,6 @@ function next() {
         currentQuestion++;
         questionInput();
     } else {
-        console.log("test");
         score()
     }
 }
@@ -138,7 +128,8 @@ function score() {
     timerEl.innerText = sec;
     questionsContainer.setAttribute("style", "display: none");
     scoreContainer.setAttribute("style", "display: flex");
-    document.getElementById("score-table").textContent = "Score: " + (numberCorrectQuestions + sec)
+    document.getElementById("score-table").textContent = "Score: " + (numberCorrectQuestions + sec);
+    
 }
 
 document.getElementById("submit-button").addEventListener("click", function() {
@@ -147,5 +138,5 @@ document.getElementById("submit-button").addEventListener("click", function() {
     var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
     previousScore.push({user: userName, score: (numberCorrectQuestions + sec)}) 
     localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
-    
+
 })
