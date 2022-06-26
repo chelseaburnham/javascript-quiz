@@ -11,5 +11,58 @@ var answerInput4 =  document.querySelector(".answer4")
 button.addEventListener("click", function startButton () {
    container.setAttribute("style", "display: none");
    questions.setAttribute("style", "display: flex");
+   return question1();
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+function question1() {
+    questionInput.textContent = "Inside which element do we put Javascript?";
+    answerInput1.textContent = "<js>";
+    answerInput2.textContent = "<scripting>";
+    answerInput3.textContent = "<script>";
+    answerInput4.textContent = "<javascript>";
+}
+
+function question2() {
+    questionInput.textContent = "What is the correct syntax for referring to an external script called 'abc.js'?";
+    answerInput1.textContent = "<script href='abc.js>'";
+    answerInput2.textContent = "<script name='abc.js'>";
+    answerInput3.textContent = "<script src='abc.js'>";
+    answerInput4.textContent = "None of the above";
+}
+
+function question2() {
+    questionInput.textContent = "What is mean by 'this' keyword in javascript?";
+    answerInput1.textContent = "It refers current object";
+    answerInput2.textContent = "It referes previous object";
+    answerInput3.textContent = "It is variable which contains value";
+    answerInput4.textContent = "None of the above";
+}
+
+function question2() {
+    questionInput.textContent = "What are variables used for in JavaScript Programs?";
+    answerInput1.textContent = "Storing numbers, dates, or other values";
+    answerInput2.textContent = "Varying randomly";
+    answerInput3.textContent = "Causing high-school algebra flashbacks";
+    answerInput4.textContent = "None of the above";
+}
+
+function question2() {
+    questionInput.textContent = "Which is not an example of a datatype?";
+    answerInput1.textContent = "boolean";
+    answerInput2.textContent = "number";
+    answerInput3.textContent = "variable";
+    answerInput4.textContent = "string";
+}
