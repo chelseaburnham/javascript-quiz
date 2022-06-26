@@ -7,11 +7,13 @@ var sec = 59;
 var isCorrect = true
 
 var question1 = document.querySelector(".question");
-var option1 = document.querySelector(".option1");
-var option2 = document.querySelector(".option2");
-var option3 = document.querySelector(".option3");
-var option4 = document.querySelector(".option4");
+var option1 = document.querySelector("#option1");
+var option2 = document.querySelector("#option2");
+var option3 = document.querySelector("#option3");
+var option4 = document.querySelector("#option4");
+var userAnswer = document.getElementById("user-answer")
 
+var currentQuestion = 0
 
 var myQuiz = [
     {
@@ -77,21 +79,52 @@ button.addEventListener("click", function startButton() {
    mainContainer.setAttribute("style", "display: none");
    questionsContainer.setAttribute("style", "display: flex");
     timerStart();
-    question1.textContent = myQuiz[0].question;
-    option1.textContent = myQuiz[0].answers[0].a;
-    option2.textContent = myQuiz[0].answers[1].b;
-    option3.textContent = myQuiz[0].answers[2].c;
-    option4.textContent = myQuiz[0].answers[3].d;
+    questionInput();
 })
 
-option3.addEventListener("click", function next() {
-    if (isCorrect === true) {
-        question1.textContent = myQuiz[1].question;
-        option1.textContent = myQuiz[1].answers[0].a;
-        option2.textContent = myQuiz[1].answers[1].b;
-        option3.textContent = myQuiz[1].answers[2].c;
-        option4.textContent = myQuiz[1].answers[3].d;
-    } else if(isCorrect === false) {
-        console.log("false")
+option1.addEventListener("click", next)
+option2.addEventListener("click", next)
+option3.addEventListener("click", next)
+option4.addEventListener("click", next)
+
+function next() {
+    // if (isCorrect === true) {
+    //     question1.textContent = myQuiz[1].question;
+    //     option1.textContent = myQuiz[1].answers[0].a;
+    //     option2.textContent = myQuiz[1].answers[1].b;
+    //     option3.textContent = myQuiz[1].answers[2].c;
+    //     option4.textContent = myQuiz[1].answers[3].d;
+    // } else if(isCorrect === false) {
+    //     console.log("false")
+    // }
+    var answer = this.getAttribute("id") 
+    if (answer === "option1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
+        userAnswer.textContent = "That answer is incorrect.";
+        sec-=5
+    }else if (answer === "option2" && myQuiz[currentQuestion].answers[1].isCorrect === false) {
+        userAnswer.textContent = "That answer is incorrect.";
+        sec-=5
+    } else if (answer === "option3" && myQuiz[currentQuestion].answers[2].isCorrect === false) {
+        userAnswer.textContent = "That answer is incorrect.";
+        sec-=5
+    } else if (answer === "option4" && myQuiz[currentQuestion].answers[3].isCorrect === false) {
+        userAnswer.textContent = "That answer is incorrect.";
+        sec-=5
+    } else {
+        userAnswer.textContent = "That answer is correct.";
     }
-})
+    if(currentQuestion < myQuiz.length-1) {
+        currentQuestion++;
+        questionInput();
+    } else {
+        console.log("test")
+    }
+}
+
+function questionInput() {
+    question1.textContent = myQuiz[currentQuestion].question;
+    option1.textContent = myQuiz[currentQuestion].answers[0].a;
+    option2.textContent = myQuiz[currentQuestion].answers[1].b;
+    option3.textContent = myQuiz[currentQuestion].answers[2].c;
+    option4.textContent = myQuiz[currentQuestion].answers[3].d;
+}
