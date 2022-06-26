@@ -9,6 +9,7 @@ var answerInput3 =  document.querySelector(".answer3")
 var answerInput4 =  document.querySelector(".answer4")
 var timerEl = document.querySelector(".timer")
 var timer;
+var sec = 60;
 
 button.addEventListener("click", function startButton () {
    container.setAttribute("style", "display: none");
@@ -18,18 +19,18 @@ button.addEventListener("click", function startButton () {
 })
 
 function timerStart () {
-    var sec = 60;
     timer = setInterval(()=>{
         timerEl.innerHTML = +sec;
         sec --;
-    }, 1000);
     if (sec < 0) {
-        clearInterval(interval);
-    }
+        clearInterval(timer);
+        }
+    }, 1000);
+    
 }
 
 
-//how do I clear interval for when the seconds or timer hits 0?
+
 
 
 
