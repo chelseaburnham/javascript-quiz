@@ -17,14 +17,14 @@
     font-size: 20px;
     border-width: 2px;
  }
-  
- .questions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    display: none;
-    gap: 20px;
+
+ #question1, #question2, #question3, #question4, #question5 {
+   display: none;
+   /* display: flex; */
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
  }
   
  footer {

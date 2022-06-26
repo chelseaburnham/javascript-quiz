@@ -1,6 +1,12 @@
 var button = document.querySelector(".button-element")
-var questions = document.querySelector(".questions")
+var questions = document.querySelector(".questions-container")
 var container = document.getElementById("container")
+var questionOne = document.getElementById("question1")
+var questionTwo = document.getElementById("question2")
+var questionThree = document.getElementById("question3")
+var questionFour = document.getElementById("question4")
+var questionFive = document.getElementById("question5")
+
 
 var questionInput = document.querySelector(".newQuestion")
 var answerInput1 =  document.querySelector(".answer1")
@@ -13,7 +19,12 @@ var sec = 60;
 
 button.addEventListener("click", function startButton () {
    container.setAttribute("style", "display: none");
-   questions.setAttribute("style", "display: flex");
+//    questions.setAttribute("style", "display: none");
+   questionOne.setAttribute("style", "display: flex");
+   questionTwo.setAttribute("style", "display: none");
+   questionThree.setAttribute("style", "display: none");
+   questionFour.setAttribute("style", "display: none");
+   questionFive.setAttribute("style", "display: none");
     timerStart();
     return question1();
 })
@@ -28,6 +39,9 @@ function timerStart () {
     }, 1000);
     
 }
+
+
+
 
 
 
