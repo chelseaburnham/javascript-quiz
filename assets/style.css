@@ -1,0 +1,35 @@
+* {
+    background-color: lightblue;
+ }
+  
+ h1 {
+    text-align: center;
+ }
+  
+ #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
+  
+ .button-element {
+    font-size: 20px;
+    border-width: 2px;
+ }
+  
+ .questions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    gap: 20px;
+ }
+  
+ footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+ }
+ 
