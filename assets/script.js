@@ -140,27 +140,6 @@ function score() {
 
 var submit = document.getElementById("submit-button")
 
-// submit.addEventListener("click", function() {
-//     var userName = document.getElementById("user-name").value;
-//     var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
-//     previousScore.push({user: userName, score: (numberCorrectQuestions + sec)}) 
-//     localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
-// })
-
-// function addElement() {
-//     var scoreLog = document.createElement("li")
-//     var newLi = document.getElementById("high-scores-container")
-//     newLi.textContent = localStorage.getItem(userName, score)
-//     document.body.append(scoreLog, newLi)
-// }
-
-
 submit.addEventListener("click", function() {
-    var userName = document.getElementById("user-name").value;
-    // window.localStorage.setItem("user:", userName)
-    // window.localStorage.setItem("score:", (numberCorrectQuestions + sec))
-    var newScore = (numberCorrectQuestions + sec)
-    window.localStorage.setItem("user", JSON.stringify({userName, newScore}))
-    var data = JSON.parse(localStorage.getItem("user"))
+    localStorage.setItem("user:", JSON.stringify(numberCorrectQuestions + sec))
 })
-
