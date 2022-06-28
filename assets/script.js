@@ -141,5 +141,8 @@ function score() {
 var submit = document.getElementById("submit-button")
 
 submit.addEventListener("click", function() {
-    localStorage.setItem("user:", JSON.stringify(numberCorrectQuestions + sec))
+    var userName = document.getElementById("user-name").value;
+    var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
+    previousScore.push({user: userName, score: (numberCorrectQuestions + sec)}) 
+    localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
 })
