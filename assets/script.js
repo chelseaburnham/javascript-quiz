@@ -17,6 +17,7 @@ var scoreContainer = document.getElementById("score-container")
 var currentQuestion = 0
 var numberCorrectQuestions = 0 
 
+//object that contains the 5 questions, answer choices, and correct answer
 var myQuiz = [
     {
         question: "Inside which element do we put Javascript?",
@@ -65,8 +66,10 @@ var myQuiz = [
     }
 ]
 
+
+//this function creates the timer that counts down from 60 and stops at 0
 function timerStart () {
-    timer = setInterval(()=>{
+    timer = setInterval(function name() {
         timerEl.innerText = sec;
         sec --;
     if (sec < 0) {
@@ -76,7 +79,7 @@ function timerStart () {
     
 }
 
-
+//when the start button is clicked, the paragraph and button disappear, the timer starts, and the first question appears
 button.addEventListener("click", function startButton() {
    mainContainer.setAttribute("style", "display: none");
    questionsContainer.setAttribute("style", "display: flex");
@@ -89,6 +92,8 @@ option2.addEventListener("click", next)
 option3.addEventListener("click", next)
 option4.addEventListener("click", next)
 
+
+//this function moves through the questions, if the answer is incorrect it will display a message that is incorrect, and if the answer is correct, it will display a message that is correct
 function next() {
     var answer = this.getAttribute("id") 
     if (answer === "option1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
@@ -115,6 +120,7 @@ function next() {
     }
 }
 
+//this function displays the text content displayed in the myQuiz array depending on the current question
 function questionInput() {
     question1.textContent = myQuiz[currentQuestion].question;
     option1.textContent = myQuiz[currentQuestion].answers[0].a;
@@ -123,20 +129,38 @@ function questionInput() {
     option4.textContent = myQuiz[currentQuestion].answers[3].d;
 }
 
+//this function clears the time so it stops at 0 instead of going into the negatives; it also makes the questions container disapper and displays the score
 function score() {
     clearInterval(timer);
     timerEl.innerText = sec;
     questionsContainer.setAttribute("style", "display: none");
     scoreContainer.setAttribute("style", "display: flex");
-    document.getElementById("score-table").textContent = "Score: " + (numberCorrectQuestions + sec);
-    
+    document.getElementById("score-number").textContent = "Score: " + (numberCorrectQuestions + sec);
 }
 
-document.getElementById("submit-button").addEventListener("click", function() {
-    var userName = document.getElementById("user-name").value;
-    console.log(userName)
-    var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
-    previousScore.push({user: userName, score: (numberCorrectQuestions + sec)}) 
-    localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
+var submit = document.getElementById("submit-button")
 
+// submit.addEventListener("click", function() {
+//     var userName = document.getElementById("user-name").value;
+//     var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
+//     previousScore.push({user: userName, score: (numberCorrectQuestions + sec)}) 
+//     localStorage.setItem("Javascript-Quiz", JSON.stringify(previousScore));
+// })
+
+// function addElement() {
+//     var scoreLog = document.createElement("li")
+//     var newLi = document.getElementById("high-scores-container")
+//     newLi.textContent = localStorage.getItem(userName, score)
+//     document.body.append(scoreLog, newLi)
+// }
+
+
+submit.addEventListener("click", function() {
+    var userName = document.getElementById("user-name").value;
+    // window.localStorage.setItem("user:", userName)
+    // window.localStorage.setItem("score:", (numberCorrectQuestions + sec))
+    var newScore = (numberCorrectQuestions + sec)
+    window.localStorage.setItem("user", JSON.stringify({userName, newScore}))
+    var data = JSON.parse(localStorage.getItem("user"))
 })
+
