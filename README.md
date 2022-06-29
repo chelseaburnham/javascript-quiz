@@ -10,8 +10,8 @@ To install this project, fork the repository to your Github account. <br />
 Once on your Github account, clone the repository to your local machine. 
 
 ##  Usage
-Suitable for creating a multiple choice quiz. You can switch out the questions and answers, as well as add more depending on your needs. <br />
-![Example1](ADD EXAMPLE)
+You can save your scores to local storage and compare your previous scores. <br />
+![Example1](./assets/javascript-quiz.gif)
 
 ##  Credits
 [w3schools](https://www.w3schools.com/)<br />
