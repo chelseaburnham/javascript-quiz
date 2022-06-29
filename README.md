@@ -1,7 +1,7 @@
 # javascript-quiz
 
 ##  Description
-This application is a multiple choice quiz. It contains 5 questions with one correct answer for each. After you click start quiz, a timer begins and the user has 1 minute to answer the questions. If any of the questions are answered incorrectly, 5 seconds will be deducted from the total time. At the end, your score will be the time you have leftover plus a point for each question answered correctly. You can then submit your name to track your previous scores in your computer's local storage. 
+This application is a multiple choice quiz. It contains 5 questions with one correct answer for each. After you click start quiz, a timer begins and the user has 1 minute to answer the questions. If any of the questions are answered incorrectly, 10 seconds will be deducted from the total time. At the end, your score will be the time you have leftover plus a point for each question answered correctly. You can then submit your name to track your previous scores in your computer's local storage. 
 
 [Deployable Link](https://chelseaburnham.github.io/javascript-quiz/)
 

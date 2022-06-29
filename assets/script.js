@@ -1,9 +1,9 @@
 var button = document.querySelector(".button-element")
 var mainContainer = document.getElementById("container")
 var questionsContainer = document.querySelector(".questions-container")
-var timerEl = document.querySelector(".timer")
+var timerEl = document.querySelector("#time-left")
 var timer;
-var sec = 59;
+var sec = 60;
 var isCorrect = true
 
 var question1 = document.querySelector(".question");
@@ -98,16 +98,16 @@ function next() {
     var answer = this.getAttribute("id") 
     if (answer === "option1" && myQuiz[currentQuestion].answers[0].isCorrect === false) {
         userAnswer.textContent = "That answer is incorrect.";
-        sec-=5
+        sec-=10
     }else if (answer === "option2" && myQuiz[currentQuestion].answers[1].isCorrect === false) {
         userAnswer.textContent = "That answer is incorrect.";
-        sec-=5
+        sec-=10
     } else if (answer === "option3" && myQuiz[currentQuestion].answers[2].isCorrect === false) {
         userAnswer.textContent = "That answer is incorrect.";
-        sec-=5
+        sec-=10
     } else if (answer === "option4" && myQuiz[currentQuestion].answers[3].isCorrect === false) {
         userAnswer.textContent = "That answer is incorrect.";
-        sec-=5
+        sec-=10
     } else {
         numberCorrectQuestions++;
         userAnswer.textContent = "That answer is correct.";
@@ -140,6 +140,7 @@ function score() {
 
 var submit = document.getElementById("submit-button")
 
+// this is listening for the submit button to be clicked; when clicked, it shows the user's previous scores
 submit.addEventListener("click", function() {
     var userName = document.getElementById("user-name").value;
     var previousScore = JSON.parse(localStorage.getItem("Javascript-Quiz")) || []
